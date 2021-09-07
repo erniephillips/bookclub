@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bookclub | Contact Us.</title>
+  <div th:insert="~{fragments/cssHead :: head}"></div>
+</head>
+
+<body>
+  <div th:insert="~{fragments/header :: header}"></div>
+
+  <main>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12">
+          <h1>About Us</h1>
+        </div>
+        <div class="col-12">
+          This is a Spring Boot MVC application intended as a class project at Bellvue University. The class is CIS-530
+          and consists of 12 weeks.
+          As each week progresses we will learn additional components of the framework and process, then incorporate it
+          into this application. The author
+          of this specific application is Ernie Phillips...
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div th:insert="~{fragments/footer :: footer}"></div>
+  <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+</body>
+
+</html>
