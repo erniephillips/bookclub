@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bookclub | My Wishlist</title>
+  <div th:insert="~{fragments/cssHead :: head}"></div>
+</head>
+
+<body>
+  <div th:insert="~{fragments/header :: header}"></div>
+
+  <main>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12">
+          <h1>My Wishlist</h1>
+        </div>
+        <div class="col-12">
+          <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary text-center">New Wishlist Item</a>
+          <table class="table table-striped">
+            <thead>
+              <tr>ISBN</tr>
+              <tr>Title</tr>
+            </thead>
+            <tbody th:each="item : ${wishlist}">
+              <tr>
+                <td th:text="${item.getIsbn()}"></td>
+                <td th:text="${item.getTitle()}"></td>
+                <td>
+                  <a href="#" class="link">Edit</a> |
+                  <a href="#" class="link">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div th:insert="~{fragments/footer :: footer}"></div>
+  <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+</body>
+
+</html>

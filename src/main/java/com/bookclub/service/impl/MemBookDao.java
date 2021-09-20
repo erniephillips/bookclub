@@ -3,7 +3,7 @@
     Modified By: Ernie Phillips III
     Created Date: 09/13/2021
     Modified Date: 09/13/2021
-    Purpose: 
+    Purpose: class that implements contract between generic dao and book dao extension through inheritance
 */
 
 package com.bookclub.service.impl;
