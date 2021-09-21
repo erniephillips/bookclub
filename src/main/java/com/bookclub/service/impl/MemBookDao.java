@@ -20,11 +20,21 @@ public class MemBookDao implements BookDao {
   public MemBookDao(){
     books = new ArrayList<Book>(
       List.of(
-        new Book("2342345", "Test 1", "Test Description 1", 23, new ArrayList<String>(List.of("Author 1", "Author 2"))),
-        new Book("511-8956541", "Test 2", "Test Description 2", 266, new ArrayList<String>(List.of("Author 3", "Author 4"))),
-        new Book("8251-561651", "Test 3", "Test Description 3", 65, new ArrayList<String>(List.of("Author 5", "Author 6"))),
-        new Book("654156146", "Test 4", "Test Description 4", 523, new ArrayList<String>(List.of("Author 7", "Author 8"))),
-        new Book("44134254", "Test 5", "Test Description 5", 65, new ArrayList<String>(List.of("Author 9", "Author 10")))
+        new Book("978-0262510875", "Structure and Interpretation of Computer Programs (SICP)", 
+          "The Structure and Interpretation of Computer Programs, a.k.a. SICP is among the best books to learn the fundamentals of programming. Employed as a foundational course to programming at MIT, SICP is a generic programming book that uses Scheme to illustrate the various programming concepts.", 
+          304, new ArrayList<String>(List.of("Harold Abelson", "Gerald Jay Sussman", "Julie Sussman"))),
+        new Book("978-0132350884", "Clean Code: A Handbook of Agile Software Craftsmanship", 
+          "The clean code offers invaluable insights into code cleaning and software development. It has thorough, step-by-step explanations on cleaning, writing, and refactoring code. The programming book has a galore of practical examples about the how and why of writing clean code.", 
+          784, new ArrayList<String>(List.of("Robert C. Martin"))),
+        new Book("978-0262033848", "Introduction to Algorithms", 
+          "All the algorithms discussed in the Introduction to Algorithms book are amply explained. They are presented using pseudocode, readable by programmers of all skill levels, even those who are relatively new to programming.", 
+          65, new ArrayList<String>(List.of("Thomas H. Cormen", "Charles E. Leiserson", "Ronald L. Rivest", "Clifford Stein"))),
+        new Book("978-0137081073", "Code Complete: A Practical Handbook of Software Construction", 
+          "Want to know how to write robust code irrespective of the architecture of a programming language? Then consider reading the Code Complete: A Practical Handbook of Software Construction. It comprehensively covers all the aspects of the structure of good code.", 
+          523, new ArrayList<String>(List.of("Steve McConnell"))),
+        new Book("978-0201633610", "Design Patterns: Elements of Reusable Object-Oriented Software", 
+          "If you don’t have a good grasp over UML, you might find it difficult to ingest some of the information and examples compiled in the programming book. That, however, will not stop you from appreciating the beauty of the narration in the Design Patterns book, which is easy and informative.", 
+          655, new ArrayList<String>(List.of("Erich Gamma", "Richard Helm", "Ralph Johnson", "John Vlissides", "Grady Booch (Foreword)")))
       )
     );
   }

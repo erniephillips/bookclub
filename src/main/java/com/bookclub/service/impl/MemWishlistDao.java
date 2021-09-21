@@ -1,6 +1,3 @@
-package com.bookclub.service.impl;
-
-import java.util.ArrayList;
 /*
     Krasso, R., (2021). CIS 505 Intermediate Java Programming. Bellevue University, all  rights reserved.
     Modified By: Ernie Phillips III
@@ -9,6 +6,9 @@ import java.util.ArrayList;
     Purpose: class that implements contract between generic dao and wishlistitem dao extension through inheritance
 */
 
+package com.bookclub.service.impl;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bookclub.model.WishlistItem;

@@ -14,7 +14,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.bookclub.model.WishlistItem;
-import com.bookclub.service.dao.WishlistDao;
 import com.bookclub.service.impl.MemWishlistDao;
 
 import org.springframework.stereotype.Controller;

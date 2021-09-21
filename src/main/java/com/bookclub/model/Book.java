@@ -3,7 +3,7 @@
     Modified By: Ernie Phillips III
     Created Date: 09/13/2021
     Modified Date: 09/13/2021
-    Purpose: Book object model with constructor for book intantiation and access/mutator methods for all private vars
+    Purpose: Book object model with constructor for book instantiation and access/mutator methods for all private vars
 */
 
 package com.bookclub.model;
@@ -18,7 +18,7 @@ public class Book { //class creation
   private int numOfPages;
   private List<String> authors;
 
-  //create a default tostring method to return var accessors back to client
+  //create a default toString method to return var accessors back to client
   @Override
   public String toString() {
     return "Book{" +
@@ -30,7 +30,7 @@ public class Book { //class creation
       "}";
   }
 
-  public Book(){ //directions did not call for a default constructor, but on page 2 in the override methd, a new empty book is returned. Can't do that in the MemBookDao without a dao so this was added
+  public Book(){ //directions did not call for a default constructor, but on page 2 in the override method, a new empty book is returned. Can't do that in the MemBookDao without a dao so this was added
 
   }
 
