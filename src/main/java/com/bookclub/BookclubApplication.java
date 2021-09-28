@@ -3,7 +3,7 @@
     URL: https://github.com/buwebdev/cis-530
     Modified By: Ernie Phillips III
     Created Date: 09/01/2021
-    Modified Date: 09/01/2021
+    Modified Date: 09/27/2021
     Purpose: Main class for bootstrapping the application
 */
 package com.bookclub;

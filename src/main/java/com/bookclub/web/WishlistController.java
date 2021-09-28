@@ -14,8 +14,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.bookclub.model.WishlistItem;
-import com.bookclub.service.impl.MemWishlistDao;
+import com.bookclub.service.dao.WishlistDao;
+import com.bookclub.service.impl.MongoWishlistDao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,11 +28,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller 
 @RequestMapping("/wishlist") // requestMapping is setting of url mappings
 public class WishlistController {
-  
+  WishlistDao wishlistDao = new MongoWishlistDao(); //create instance of child class from inherited parent
+
+  @Autowired
+  private void setWishlistDao(WishlistDao wishlistDao){
+    this.wishlistDao = wishlistDao;
+  }
+
   @GetMapping
-  public String showWishlist(Model model){ //return list of wishlist items
-    MemWishlistDao mwd = new MemWishlistDao(); 
-    List<WishlistItem> wishlist = mwd.list();
+  public String showWishlist(Model model){ //return list of wishlist items  
+    List<WishlistItem> wishlist = wishlistDao.list();
     model.addAttribute("wishlist", wishlist);
     return "wishlist/list";
   }
@@ -46,9 +53,8 @@ public class WishlistController {
     if(bindingResult.hasErrors()) //bindingResults evaluates form and any errors with boolean output
       return "wishlist/new"; //return current form back
 
-    //add new record to list in memory
-    MemWishlistDao mwd = new MemWishlistDao();
-    var wishlist = mwd.add(wishlistItem);
+    //add record to DB
+    wishlistDao.add(wishlistItem);
     return "redirect:/wishlist";
   }
 }
