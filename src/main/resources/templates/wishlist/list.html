@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" class="h-100">
 
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <div th:insert="~{fragments/cssHead :: head}"></div>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
   <div th:insert="~{fragments/header :: header}"></div>
 
   <main>
@@ -17,11 +17,14 @@
           <h1>My Wishlist</h1>
         </div>
         <div class="col-12">
-          <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary text-center">New Wishlist Item</a>
-          <table class="table table-striped">
+          <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary float-end">New Wishlist Item</a>
+          <table class="table table-secondary table-striped">
             <thead>
-              <tr>ISBN</tr>
-              <tr>Title</tr>
+              <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Actions</th>
+              </tr>
             </thead>
             <tbody th:each="item : ${wishlist}">
               <tr>
@@ -39,8 +42,10 @@
     </div>
 
   </main>
-  <div th:insert="~{fragments/footer :: footer}"></div>
-  <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+  <div class="footer mt-auto"> 
+    <div th:insert="~{fragments/footer :: footer}"></div>
+    <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+  </div>
 </body>
 
 </html>
