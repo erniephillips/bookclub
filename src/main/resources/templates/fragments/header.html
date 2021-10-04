@@ -12,7 +12,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav w-100">
             <li class="nav-item">
               <a class="nav-link" href="/about" th:href="@{/about}">About Us</a>
             </li>
@@ -20,7 +20,21 @@
               <a class="nav-link" href="/contact" th:href="@{/contact}">Contact Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/wishlist" th:href="@{/wishlist}">Wishlist</a>
+              <a href="/wishlist" th:href="@{/wishlist}" class="nav-link">Wishlist</a>
+            </li>
+          </ul>
+
+          <div class="nav navbar-nav ml-auto w-100 justify-content-center">
+            <div sec:authorize="isAuthenticated()">
+              Logged in as <strong sec:authentication="name"></strong>
+            </div>
+          </div>
+
+          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item float-end">
+              <div sec:authorize="isAuthenticated()"><!--Button should be hidden unless user is logged in-->
+                <a href="/logout" th:href="@{/logout}" class="nav-link float-end">Logout</a>
+              </div>
             </li>
           </ul>
         </div>
