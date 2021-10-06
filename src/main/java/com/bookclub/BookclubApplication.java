@@ -10,13 +10,13 @@
 */
 package com.bookclub;
 
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+//import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication 
-@EnableEncryptableProperties //Adding Jasypt annotation to tell app to look for decrypt key and ENC() values anywhere in app
+//@EnableEncryptableProperties //Adding Jasypt annotation to tell app to look for decrypt key and ENC() values anywhere in app
 public class BookclubApplication {
 
     public static void main(String[] args) {
