@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" class="h-100">
 
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <div th:insert="~{fragments/cssHead :: head}"></div>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
   <div th:insert="~{fragments/header :: header}"></div>
 
   <main>
@@ -47,9 +47,10 @@
         </div>
     </section>
   </main>
-
-  <div th:insert="~{fragments/footer :: footer}"></div>
-  <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+  <div class="footer mt-auto"> 
+    <div th:insert="~{fragments/footer :: footer}"></div>
+    <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+  </div>
 </body>
 
 </html>

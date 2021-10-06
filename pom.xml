@@ -43,6 +43,25 @@
 			<artifactId>jasypt-spring-boot</artifactId>
 			<version>2.0.0</version>
 		</dependency>
+        <!--For Authentication using the Spring framework-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--Thymeleaf security-->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+        <!--Allow for static file changes while running app 
+            https://attacomsian.com/blog/spring-boot-auto-reload-thymeleaf-templates
+            NEED TO REMOVE BEFORE DEPLOYMENT TO HEROKU
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
