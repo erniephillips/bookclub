@@ -47,8 +47,7 @@ public class MongoWishlistDao implements WishlistDao { // implement the CRUD int
 
   @Override
   public WishlistItem find(String key) {
-    // TODO Auto-generated method stub
-    return null;
+    return mongoTemplate.findById(key, WishlistItem.class); //find by the key
   }
 
 }
