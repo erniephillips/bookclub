@@ -9,8 +9,6 @@
 
 package com.bookclub.web;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import com.bookclub.model.WishlistItem;
@@ -25,33 +23,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller 
+@Controller
 @RequestMapping("/wishlist") // requestMapping is setting of url mappings
 public class WishlistController {
-  WishlistDao wishlistDao = new MongoWishlistDao(); //create instance of child class from inherited parent
+  WishlistDao wishlistDao = new MongoWishlistDao(); // create instance of child class from inherited parent
 
   @Autowired
-  private void setWishlistDao(WishlistDao wishlistDao){
+  private void setWishlistDao(WishlistDao wishlistDao) {
     this.wishlistDao = wishlistDao;
   }
 
   @GetMapping
-  public String showWishlist(Model model){ //return list of wishlist items  
+  public String showWishlist(Model model) { // return list of wishlist items
     return "wishlist/list";
   }
 
   @GetMapping("/new")
-  public String wishlistForm(Model model){ //return page for new item
+  public String wishlistForm(Model model) { // return page for new item
     model.addAttribute("wishlistItem", new WishlistItem());
     return "wishlist/new";
   }
 
-  @PostMapping //post to new page
-  public String addWishlistItem(@Valid WishlistItem wishlistItem, BindingResult bindingResult){
-    if(bindingResult.hasErrors()) //bindingResults evaluates form and any errors with boolean output
-      return "wishlist/new"; //return current form back
+  @PostMapping // post to new page
+  public String addWishlistItem(@Valid WishlistItem wishlistItem, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) // bindingResults evaluates form and any errors with boolean output
+      return "wishlist/new"; // return current form back
 
-    //add record to DB
+    // add record to DB
     wishlistDao.add(wishlistItem);
     return "redirect:/wishlist";
   }

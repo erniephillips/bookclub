@@ -17,35 +17,45 @@
           <h1>My Wishlist</h1>
         </div>
         <div class="col-12">
-          <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary float-end mb-3">New Wishlist Item</a>
-          <table class="table table-secondary table-striped">
-            <thead>
-              <tr>
-                <th>ISBN</th>
-                <th>Title</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody th:each="item : ${wishlist}">
-              <tr>
-                <td th:text="${item.getIsbn()}"></td>
-                <td th:text="${item.getTitle()}"></td>
-                <td>
-                  <a href="#" class="link">Edit</a> |
-                  <a href="#" class="link">Delete</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <a href="/wishlist/new" th:href="@{/wishlist/new}" class="btn btn-outline-secondary float-end mb-3">New
+            Wishlist Item</a>
+          <div id="wishlist"></div>
         </div>
       </div>
     </div>
 
   </main>
-  <div class="footer mt-auto"> 
+  <div class="footer mt-auto">
     <div th:insert="~{fragments/footer :: footer}"></div>
     <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
   </div>
+  <script>
+    //jQuery AJAX call would suffice here as well. Is class HttpClient ECMA Script 5 compliant as well for dated browsers such as IE? I need to go back and research
+    //https://www.freecodecamp.org/news/a-practical-es6-guide-on-how-to-perform-http-requests-using-the-fetch-api-594c3d91a547/
+    class HttpClient { //define a class called HttpClient which will issue an asyncronous GET and return data from API call
+      async getBooks(url, params = "") {//create an async method named getBooks accepting two params //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+        url = new URL(url); //set the url param as a URL object interface which can parse, construct, normalize, and encode URLs
+        url.search = new URLSearchParams(params).toString(); //pass the query string to the URL interface
+        const res = await fetch(url.toString(), { method: 'GET' }); //create a fetch that returns a 'promise' response object and stores in var res. The async/await is also in C# apps
+        return res.json(); //return the response object as JSON
+      }
+    }
+    function buildTable(books){
+      let tableString = `<table class="table"><tr><th>ISBN</th><th>Title</th><th>Functions</th></tr>`; //create the html output string
+      for (let book of books){
+        tableString += `<tr><td>${book.isbn}</td><td>${book.title}</td><td><a href="#">Edit</a> | <a href="#">Delete</a></td></tr>`; //use string interpolation to display book info
+      }
+      return tableString += `</table>`; //close the table tag out and return
+    }
+
+    //Code below to to sequentially fire after DOM loads elements, async will fire in own thread?
+    const http = new HttpClient(); //instantiate the HttpClient class, invoking an asych get/fetch api
+    http.getBooks("http://localhost:8080/api/wishlist").then(res => { //handle returned promise object
+      document.getElementById("wishlist").innerHTML = buildTable(res) //if success call build table method and pass book list
+    }).catch(e => {
+      alert(e); //alert the user of the error that occurred
+    });
+  </script>
 </body>
 
 </html>
