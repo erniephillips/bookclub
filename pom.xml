@@ -16,6 +16,10 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
+        <dependency><!-- Simple way for extracting parts of a given document -->
+            <groupId>com.jayway.jsonpath</groupId><!--allows compilation of json path string-->
+            <artifactId>json-path</artifactId>
+        </dependency>
         <dependency><!-- Swagger UI-->
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>

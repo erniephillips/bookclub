@@ -11,7 +11,7 @@ package com.bookclub.web;
 import java.util.List;
 
 import com.bookclub.model.Book;
-import com.bookclub.service.impl.MemBookDao;
+import com.bookclub.service.impl.RestBookDao;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class HomeController {
     @RequestMapping(method = RequestMethod.GET) // route all base get requests to this method
     /*HOME PAGE*/
     public String showHome(Model model) { // pass the current model (if any)
-        MemBookDao bookDao = new MemBookDao(); //instantiate the book data access object
+        RestBookDao bookDao = new RestBookDao(); //instantiate the book data access object
         List<Book> books = bookDao.list(); //create a list of five books from dao
         
         for (Book book : books){//loop through the books and output default overridden string method to console
@@ -45,7 +45,7 @@ public class HomeController {
     public String getMonthlyBook(@PathVariable("id") String id, Model model){//let the method know param is string and stored in URL param string id
         String isbn = id; //set the isbn to be searched
         
-        MemBookDao bookDao = new MemBookDao(); //instantiate the book data access object
+        RestBookDao bookDao = new RestBookDao(); //instantiate the book data access object
         Book book = bookDao.find(isbn); //call the access layer to find specific book
 
         System.out.println(book.toString()); //output the found book, if none, new empty book obj is returned

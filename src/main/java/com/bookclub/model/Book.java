@@ -8,15 +8,13 @@
 
 package com.bookclub.model;
 
-import java.util.List;
-
 public class Book { //class creation
   //declare variables
   private String isbn;
   private String title;
   private String description;
+  private String infoUrl;
   private int numOfPages;
-  private List<String> authors;
 
   //create a default toString method to return var accessors back to client
   @Override
@@ -25,8 +23,8 @@ public class Book { //class creation
       " isbn=<" + getIsbn() + ">" +
       ", title=<" + getTitle() + ">" +
       ", description=<" + getDescription() + ">" +
+      ", infoUrl=<" + getInfoUrl() + ">" +
       ", numOfPages=<" + getNumOfPages() + ">" +
-      ", authors=<" + getAuthors() + ">" +
       "}";
   }
 
@@ -34,13 +32,19 @@ public class Book { //class creation
 
   }
 
+  public Book(String isbn, String title, String infoUrl) {
+    this.isbn = isbn;
+    this.title = title;
+    this.infoUrl = infoUrl;
+  }
+
   //constructor using all vars set here
-  public Book(String isbn, String title, String description, int numOfPages, List<String> authors) {
+  public Book(String isbn, String title, String description, String infoUrl, int numOfPages) {
     this.isbn = isbn;
     this.title = title;
     this.description = description;
+    this.infoUrl = infoUrl;
     this.numOfPages = numOfPages;
-    this.authors = authors;
   }
 
   //getter/setter methods
@@ -76,11 +80,11 @@ public class Book { //class creation
     this.numOfPages = numOfPages;
   }
 
-  public List<String> getAuthors() {
-    return this.authors;
+  public String getInfoUrl() {
+    return this.infoUrl;
   }
 
-  public void setAuthors(List<String> authors) {
-    this.authors = authors;
+  public void setInfoUrl(String infoUrl) {
+    this.infoUrl = infoUrl;
   }
 }

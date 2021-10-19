@@ -33,21 +33,18 @@
                 <p>
                   <strong>Description:</strong> <br /><span th:text="${book.getDescription()}"></span>
                 </p>
-                <strong>Authors:</strong>
-                <ul th:each="author : ${book.getAuthors()}" style="list-style-type: none;">
-                  <li>
-                    <small class="text-muted" th:text="${author}"></small>
-                  </li>
-                </ul>
+                <strong>Web Link:</strong>
+                <p>
+                  <a href="#" target="_blank" th:href="${book.getInfoUrl()}" th:text="${book.getInfoUrl()}"></a>
+                </p>
               </div>
             </div>
+            <br />
+            <a href="/" th:href="@{/}">Return to books</a>
           </div>
-          <br />
-          <a href="/" th:href="@{/}">Return to books</a>
-        </div>
     </section>
   </main>
-  <div class="footer mt-auto"> 
+  <div class="footer mt-auto">
     <div th:insert="~{fragments/footer :: footer}"></div>
     <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
   </div>
