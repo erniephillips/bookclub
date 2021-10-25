@@ -43,7 +43,15 @@
     function buildTable(books){
       let tableString = `<table class="table"><tr><th>ISBN</th><th>Title</th><th>Functions</th></tr>`; //create the html output string
       for (let book of books){
-        tableString += `<tr><td>${book.isbn}</td><td>${book.title}</td><td><a href="#">Edit</a> | <a href="#">Delete</a></td></tr>`; //use string interpolation to display book info
+        tableString += `<tr>
+                          <td>${book.isbn}</td>
+                          <td>${book.title}</td>
+                          <td>
+                            <a href="/wishlist/${book.id}" th:href="@{/wishlist/${book.id}}">Edit</a> | 
+                            <a href="/wishlist/remove/${book.id}" th:href="@{/wishlist/remove/${book.id}}" 
+                              onclick="javascript:return confirm('Are you sure you wish to delete book: ${book.title}?')">Delete</a>
+                          </td>
+                        </tr>`; //use string interpolation to display book info
       }
       return tableString += `</table>`; //close the table tag out and return
     }

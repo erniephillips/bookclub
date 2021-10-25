@@ -14,6 +14,8 @@ import com.bookclub.service.dao.WishlistDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository("wishlistDao") // create repo name
@@ -24,8 +26,9 @@ public class MongoWishlistDao implements WishlistDao { // implement the CRUD int
   private MongoTemplate mongoTemplate; // template pattern for Spring to pass object(s) to data persistence layer
 
   @Override
-  public List<WishlistItem> list() {
-    return mongoTemplate.findAll(WishlistItem.class);
+  public List<WishlistItem> list(String username) {
+    // construct a db query and find by the current user's username
+    return mongoTemplate.find(new Query().addCriteria(Criteria.where("username").is(username)), WishlistItem.class);
   }
 
   @Override
@@ -35,19 +38,31 @@ public class MongoWishlistDao implements WishlistDao { // implement the CRUD int
 
   @Override
   public void update(WishlistItem entity) {
-    // TODO Auto-generated method stub
+    WishlistItem wishlistItem = mongoTemplate.findById((entity.getId()), WishlistItem.class);// find item by mongo _id
+    if (wishlistItem != null) {// check if item exists and set db records to incoming values
+      wishlistItem.setIsbn(entity.getIsbn());
+      wishlistItem.setTitle(entity.getTitle());
+      wishlistItem.setUsername(entity.getUsername());
+
+      // save the record
+      mongoTemplate.save(wishlistItem);
+    }
 
   }
 
   @Override
-  public boolean remove(WishlistItem entity) {
-    // TODO Auto-generated method stub
-    return false;
+  public boolean remove(String key) {
+    // what's the result t/f, can it be converted
+    var result = mongoTemplate.remove(new Query().addCriteria(Criteria.where("id").is(key)), WishlistItem.class);
+    // navigating to the remove() method has return type of 'DeleteResult'
+    // navigating to DeleteResult library reveals an acknoledgement of if the record
+    // was delete t/f
+    return result.wasAcknowledged();
   }
 
   @Override
   public WishlistItem find(String key) {
-    return mongoTemplate.findById(key, WishlistItem.class); //find by the key
+    return mongoTemplate.findById(key, WishlistItem.class); // find by the key
   }
 
 }
