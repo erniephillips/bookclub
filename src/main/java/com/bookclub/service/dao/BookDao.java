@@ -3,7 +3,7 @@
     Modified By: Ernie Phillips III
     Created Date: 09/13/2021
     Modified Date: 09/13/2021
-    Purpose: Data access object for the book collection, will likely be implemented later in the class for data retreival. Interfaced for instantiation contract 
+    Purpose: Data access object for the book collection, will likely be implemented later in the class for data retrieval. Interfaced for instantiation contract 
 */
 
 package com.bookclub.service.dao;

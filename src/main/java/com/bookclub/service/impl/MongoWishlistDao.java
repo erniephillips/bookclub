@@ -55,7 +55,7 @@ public class MongoWishlistDao implements WishlistDao { // implement the CRUD int
     // what's the result t/f, can it be converted
     var result = mongoTemplate.remove(new Query().addCriteria(Criteria.where("id").is(key)), WishlistItem.class);
     // navigating to the remove() method has return type of 'DeleteResult'
-    // navigating to DeleteResult library reveals an acknoledgement of if the record
+    // navigating to DeleteResult library reveals an acknowledgement of if the record
     // was delete t/f
     return result.wasAcknowledged();
   }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="h-100">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bookclub | Welcome</title>
+  <!--  Bootstrap StyleSheet CDN -->
+  <div th:insert="~{fragments/cssHead :: head}"></div>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <div th:insert="~{fragments/header :: header}"></div>
+
+  <main>
+    <section class="py-5 text-center container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center">Monthly Books</h1>
+        </div>
+
+        <div class="col-12">
+          <p class="text-center">
+            <a href="/monthly-books/new" th:href="@{/monthly-books/new}"
+              class="btn btn-outline-secondary text-center">New Monthly Book</a>
+          </p>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>ISBN</th>
+                <th>Functions</th>
+              </tr>
+            </thead>
+            <tbody th:each="book : ${books}">
+              <tr>
+                <td th:text="${book.getMonthText()}"></td>
+                <td th:text="${book.getIsbn()}"></td>
+                <td>
+                  <a href="#" th:href="@{/monthly-books/{id}(id=${book.getId()})}">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </section>
+  </main>
+  <div class="footer mt-auto">
+    <div th:insert="~{fragments/footer :: footer}"></div>
+    <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="h-100">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bookclub | Welcome</title>
+  <!--  Bootstrap StyleSheet CDN -->
+  <div th:insert="~{fragments/cssHead :: head}"></div>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <div th:insert="~{fragments/header :: header}"></div>
+
+  <main>
+    <section class="py-5 text-center container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center">New Monthly Book</h1>
+        </div>
+
+        <div class="col-12">
+          <form action="#" th:action="@{/monthly-books}" th:object="${bookOfTheMonth}" method="post">
+
+            <div class="mb-3">
+              <label for="month" class="form-label">Months</label>
+              <select name="month" id="month" class="form-select" th:field="*{month}">
+                <option th:each="m : ${months.keySet()}" th:value="${m}" th:utext="${months.get(m)}"></option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="isbn" class="form-label">ISBN</label>
+              <input type="text" class="form-control" id="isbn" name="isbn" th:field="*{isbn}" />
+              <small th:if="${#fields.hasErrors('isbn')}" style="color: red;" th:errors="*{isbn}"></small>
+            </div>
+
+            <button type="submit" class="btn btn-primary float-end">Create</button>
+          </form>
+          <a href="/monthly-books" class="mt-3" th:href="@{/monthly-books}">Return to Monthly Books</a>
+        </div>
+    </section>
+  </main>
+  <div class="footer mt-auto">
+    <div th:insert="~{fragments/footer :: footer}"></div>
+    <div th:insert="~{fragments/scriptFooter :: scriptFooter}"></div>
+  </div>
+</body>
+
+</html>

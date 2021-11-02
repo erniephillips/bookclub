@@ -4,7 +4,7 @@
      from https://www.baeldung.com/spring-security-5-password-storage
     Modified By: Ernie Phillips III
     Created Date: 10/04/2021
-    Modified Date: 10/04/2021
+    Modified Date: 11/02/2021
     Purpose: Security class for how user stored/retrieved. In this case, two users are created in-memory. (Likely to be changed to database store later)
 */
 
@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception{ //
     httpSecurity
       .authorizeRequests() //security policy for incoming requests
+        .antMatchers("/monthly-books/list", "/monthly-books/new", "/monthly-books").hasRole("ADMIN") //ensure only admin can get to these pages
         .anyRequest() //ALL requests
         .authenticated() //user must be authenticated
         .and()

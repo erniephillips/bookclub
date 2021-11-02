@@ -3,7 +3,7 @@
     https://www.baeldung.com/spring-uricomponentsbuilder
     Modified By: Ernie Phillips III
     Created Date: 09/13/2021
-    Modified Date: 09/13/2021
+    Modified Date: 11/02/2021
     Purpose: class that implements contract between generic dao and book dao extension through inheritance
 */
 
@@ -52,7 +52,7 @@ public class RestBookDao implements BookDao {
   }
 
   @Override // override the list method declared in the generic dao interface
-  public List<Book> list() { // return the list of books
+  public List<Book> list(String key) { // return the list of books
     String isbnString = "ISBN:9780593099322,9780261102361,9780261102378,9780590302715,9780316769532";
     Object document = getBooksDoc(isbnString); //store the parsed JSON string into this document variable
     List<Book> books = new ArrayList<Book>(); //where the books from object will be stored

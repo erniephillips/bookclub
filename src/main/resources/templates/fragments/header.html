@@ -25,6 +25,9 @@
             <li class="nav-item">
               <a href="/swagger-ui.html" target="_blank" class="nav-link">OpenAPI Specs</a>
             </li>
+            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+              <a href="/monthly-books" class="nav-link" th:href="@{/monthly-books}">Monthly Books</a>
+            </li>
           </ul>
 
           <div class="nav navbar-nav ml-auto w-100 justify-content-center">
@@ -35,7 +38,8 @@
 
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item float-end">
-              <div sec:authorize="isAuthenticated()"><!--Button should be hidden unless user is logged in-->
+              <div sec:authorize="isAuthenticated()">
+                <!--Button should be hidden unless user is logged in-->
                 <a href="/logout" th:href="@{/logout}" class="nav-link float-end">Logout</a>
               </div>
             </li>
