@@ -16,6 +16,11 @@
         <java.version>11</java.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
         <dependency><!-- Simple way for extracting parts of a given document -->
             <groupId>com.jayway.jsonpath</groupId><!--allows compilation of json path string-->
             <artifactId>json-path</artifactId>
