@@ -40,9 +40,9 @@
         return res.json(); //return the response object as JSON
       }
     }
-    function buildTable(books){
+    function buildTable(books) {
       let tableString = `<table class="table"><tr><th>ISBN</th><th>Title</th><th>Functions</th></tr>`; //create the html output string
-      for (let book of books){
+      for (let book of books) {
         tableString += `<tr>
                           <td>${book.isbn}</td>
                           <td>${book.title}</td>
@@ -57,12 +57,21 @@
     }
 
     //Code below to to sequentially fire after DOM loads elements, async will fire in own thread?
-    const http = new HttpClient(); //instantiate the HttpClient class, invoking an asych get/fetch api
-    http.getBooks("http://localhost:8080/api/wishlist").then(res => { //handle returned promise object
-      document.getElementById("wishlist").innerHTML = buildTable(res) //if success call build table method and pass book list
-    }).catch(e => {
-      alert(e); //alert the user of the error that occurred
-    });
+    const http = new HttpClient(); //instantiate the HttpClient class, invoking an async get/fetch api
+
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+      http.getBooks("http://localhost:8080/api/wishlist").then(res => { //handle returned promise object
+        document.getElementById("wishlist").innerHTML = buildTable(res) //if success call build table method and pass book list
+      }).catch(e => {
+        alert(e); //alert the user of the error that occurred
+      });
+    }else{
+      http.getBooks("https://phillips-bookclub.herokuapp.com/api/wishlist").then(res => { //handle returned promise object
+        document.getElementById("wishlist").innerHTML = buildTable(res) //if success call build table method and pass book list
+      }).catch(e => {
+        alert(e); //alert the user of the error that occurred
+      });
+    }
   </script>
 </body>
 

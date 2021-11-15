@@ -2,7 +2,7 @@ package com.bookclub;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.bookclub.web.AdminController;
+//import com.bookclub.web.AdminController;
 import com.bookclub.web.HomeController;
 import com.bookclub.web.WishlistController;
 import com.bookclub.web.WishlistRestController;
@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TestControllers {
   @Autowired
-  private AdminController adminController;
+  //private AdminController adminController;
   private WishlistController wishlistController;
   private WishlistRestController wishlistRestController;
   private HomeController homeController;
